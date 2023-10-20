@@ -21,24 +21,28 @@
             Console.WriteLine(multiply(3, 7));
 
             Func<bool, string, DateTime, decimal> differentParameterTypesFunc =
-                (bool arg1, string arg2, DateTime arg3) =>
-                {
-                    Console.WriteLine(arg1);
-                    Console.WriteLine(arg2);
-                    Console.WriteLine(arg3);
-
-                    return 1.78m;
-                };
+                (arg1, arg2, arg3) => 1.78m;
 
             Console.WriteLine(differentParameterTypesFunc(false, "string kintamasis", DateTime.Now));
 
-            Func<string> funcWithoutParameters = () =>
-            {
-                Console.WriteLine("spausdinu metodo viduj");
+            Func<string> funcWithoutParameters = () => "returning from func without parameters";
+            Console.WriteLine(funcWithoutParameters());
 
-                return "returning from func without parameters";
-            };
-            funcWithoutParameters();
+            Func<int, bool> isIntegerHigherThanTen = (number) => number > 10;
+            int numberToCheck = 4;
+            if (isIntegerHigherThanTen(numberToCheck))
+            {
+                Console.WriteLine("Skaicius didesnis nei 10");
+            }
+            else
+            {
+                Console.WriteLine("Skaicius nedidesnis nei 10");
+            }
+
+            Func<int, int, int> filterNumber =
+                (number1, number2) => number1 > number2 ? number1 : number2;
+
+
         }
     }
 }
