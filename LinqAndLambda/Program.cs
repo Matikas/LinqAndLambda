@@ -73,6 +73,39 @@
             // ForEach veikia tik Listams taigi masyva paverciame i List<string> su ToList() metodu
             // ir ForEach yra voidinis
             words.ToList().ForEach(word => Console.WriteLine(word));
+
+
+            var person1 = new Person
+            {
+                Name = "Petras",
+                Pets = new List<Pet>
+                {
+                    new Pet { PetName = "Suo"},
+                    new Pet { PetName = "Kate"},
+                }
+            };
+
+            var person2 = new Person
+            {
+                Name = "Jonas",
+                Pets = new List<Pet>
+                {
+                    new Pet { PetName = "Sunis"},
+                    new Pet { PetName = "Katinas"},
+                    new Pet { PetName = "Papuga"},
+                }
+            };
+
+            var person3 = new Person
+            {
+                Name = "Juozas",
+                Pets = new List<Pet>
+                {
+                    new Pet { PetName = "Smauglys"}
+                }
+            };
+            var personsList = new List<Person> { person1, person2, person3 };
+            List<Pet> personsPets = personsList.SelectMany(person => person.Pets).ToList();
         }
     }
 }
